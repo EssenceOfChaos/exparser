@@ -1,4 +1,5 @@
 # Exparser
+[![CircleCI](https://circleci.com/gh/EssenceOfChaos/exparser.svg?style=svg)](https://circleci.com/gh/EssenceOfChaos/exparser)
 
 **TODO: Add description**
 
