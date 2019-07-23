@@ -3,12 +3,7 @@ defmodule Exparser do
   Documentation for Exparser.
   """
 
-    # def lint_file(filename) do
-    #    case File.read(filename) do
-    #     {:ok, contents} -> lint(contents)
-    #     {:error, reason} -> IO.puts("An error has occured: #{reason}")
-    #    end
-    # end
+    defdelegate parse(file), to: Exparser.Ingest, as: :count
 
     def lint_file(file) do
         with true <- File.exists?(file),
@@ -18,10 +13,11 @@ defmodule Exparser do
      end
 
 
-
-
     ## Private functions ##
     def lint(file_contents) do
         IO.inspect(file_contents)
     end
 end
+
+# Exparser.parse("assets/data/frankenstein.txt")
+# Exparser.parse("assets/data/huckleberry_finn.txt")
