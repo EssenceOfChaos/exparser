@@ -6,7 +6,7 @@ defmodule Exparser.Ingest do
     @max_words 10
 
     # the words that can be ignored
-    # @removed_words ["a", "an", "the", "and", "i", "of", "to", "my", "in", "me", "was", "but", "had", "you"]
+    @removed_words ["a", "an", "the", "and", "i", "of", "to", "my", "in", "me", "was", "but", "had", "you", "gutenberg", "there", "about", "again", "could", "would", "gutenbergtm"]
 
     @doc """
       Count the occurance of each word.
@@ -41,7 +41,7 @@ defmodule Exparser.Ingest do
     """
     def sort_and_print(map) do
       map
-      # |> Map.drop(@removed_words)
+      |> Map.drop(@removed_words)
       |> Enum.filter(fn {word, _freq }-> String.length(word) >= 6 end)
       |> Enum.sort_by(fn {_word, freq} -> freq end, &>=/2)
       |> Enum.take(@max_words)
@@ -54,5 +54,8 @@ defmodule Exparser.Ingest do
 #   IO.puts("The 10 most frequently used words in Huckleberry Finn: ")
 #   IO.inspect(Exparser.Ingest.count("assets/data/huckleberry_finn.txt"))
 
-
+# Exparser.Ingest.count("assets/data/dracula.txt")
+# Exparser.Ingest.count("assets/data/sherlock-holmes.txt")
+# Exparser.Ingest.count("assets/data/tale-of-two-cities.txt")
+# Exparser.Ingest.count("assets/data/alices-adventures-wonderland.txt")
 
